@@ -4,12 +4,20 @@ variable "force_destroy" {
     default = false
 }
 
-variable "environment"{
+variable "s3_bucket_id"{
     description = ""
     type = string
-    default = "dev"
 }
 
+variable "distribution_arn" {
+    type = string
+    description = "Distribution to grant bucket permissions"
+}
+variable "identity_arn" {
+    type = string 
+    description = "CloudFront Identity created for add it into the S3 policy"
+  
+}
 variable "region" {
     type = string
     description = "(optional) describe your variable"
@@ -20,12 +28,14 @@ variable "account_id" {
     description = "Account where this module will be executed"
   
 }
-variable "project_name" {
-    type = string
-    description = "Project name to form the bucket name withing other vars"
-}
 
 variable "assume_role" {
     type = string
     description = ""
+}
+
+variable "environment" {
+    type = string
+    description = ""
+  
 }

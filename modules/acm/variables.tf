@@ -18,13 +18,7 @@ variable "domain"{
     type = string
 }
 
-variable "bucket"{
+variable "zone_id"{
     description = ""
     type = string
-}
-
-variable "acm_certificate_arn" {
-    description = ""
-    type = string
-  
 }

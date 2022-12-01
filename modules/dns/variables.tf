@@ -33,4 +33,4 @@ variable "domain" {
 variable "assume_role" {
     type = string
     description = "The name of the role used in your multi-account governance policy. By default AWSControlTowerExecution compatible with AWS Control Tower environments with or without AFT"
-
+}

@@ -1,9 +1,8 @@
 # Variables to be defined and used in terragrunt
 
-cdn_account_id: ""
-dns_account_id: ""
+cdn_account_id: "" # Deployment Account ID
 s3_account_id: ""
-project_name: ""
+project_name: "" 
 region: ""
 environment: ""
 domain: ""

@@ -35,7 +35,7 @@
  module "dns" {
      source = "./modules/dns"
  
-     account_id = local.settings.dns_account_id
+     account_id = local.settings.cdn_account_id
      environment = local.settings.environment
      zone_id = local.settings.zone_id
      cdn_endpoint = module.distribution.cdn_endpoint

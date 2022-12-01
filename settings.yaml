@@ -1,0 +1,12 @@
+# Variables to be defined and used in terragrunt
+
+cdn_account_id: ""
+dns_account_id: ""
+s3_account_id: ""
+project_name: ""
+region: ""
+environment: ""
+domain: ""
+zone_id: ""
+s3_force_destroy: ""
+assume_role: ""

@@ -21,26 +21,6 @@ module "cdn" {
   }
 
 
-#     + origin {
-#         + connection_attempts = 3
-#         + connection_timeout  = 10
-#         + domain_name         = "cdn-test-suarez-695964370516-prod.s3.amazonaws.com"
-#         + origin_id           = "s3_one"
-#
-#         + s3_origin_config {
-#             + origin_access_identity = "origin-access-identity/cloudfront/EJZYR4TJZ4424"
-#           }
-#       }
-#     - origin {
-#         - connection_attempts      = 3 -> null
-#         - connection_timeout       = 10 -> null
-#         - domain_name              = "cdn-test-suarez-695964370516-prod.s3.amazonaws.com" -> null
-#         - origin_access_control_id = "E8WTPE7OWBAPP" -> null
-#         - origin_id                = "s3_one" -> null
-#       }
-#
-
-
   origin = {
 
     s3_one = {

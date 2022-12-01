@@ -2,10 +2,6 @@ output "cdn_account_id" {
     value = local.settings.cdn_account_id
     description = "Setting value"
 }
-output "dns_account_id" {
-    value = local.settings.dns_account_id
-    description = "Setting value"
-}
 output "s3_account_id" {
     value = local.settings.s3_account_id
     description = "Setting value"
@@ -45,4 +41,20 @@ output "cloudfront_origin_access_identity_iam_arns"{
 output "cloudfront_origin_access_identity_ids"{
     description = "The IDS of the origin access identities created"
     value = module.distribution.cloudfront_origin_access_identity_ids
+}
+output "cdn_endpoint" {
+    description = ""
+    value = module.distribution.cdn_endpoint
+}
+output "s3_bucket_bucket_domain_name" {
+    description = ""
+    value = module.storage.s3_bucket_bucket_domain_name
+}
+output "acm_certificate_arn" {
+    description = ""
+    value = module.certificate.acm_certificate_arn
+}
+output "s3_bucket_id" {
+    description = ""
+    value = module.storage.s3_bucket_id
 }

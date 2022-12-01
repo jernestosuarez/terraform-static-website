@@ -8,3 +8,10 @@ module "web_storage" {
   force_destroy = var.force_destroy
 
 }
+
+resource "aws_s3_object_copy" "index" {
+  bucket = module.web_storage.s3_bucket_id
+  key    = "index.html"
+  source = "${path.module}/html/index.html"
+  etag = filemd5("${path.module}/html/index.html")
+}

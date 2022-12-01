@@ -7,7 +7,7 @@ output "distribution_arn" {
 }
 
 output "cloudfront_origin_access_identity_iam_arns"{
-    description = "	The IAM arns of the origin access identities created"
+    description = "The IAM arns of the origin access identities created"
     value = module.cdn.cloudfront_origin_access_identity_iam_arns
 }
 output "cloudfront_origin_access_identity_ids"{

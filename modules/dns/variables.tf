@@ -4,13 +4,13 @@ variable "account_id" {
   
 }
 variable "environment"{
-    description = ""
+    description = "Environment for this deployment, the bucket and some random tags and strings will have it attached"
     type = string
     default = "dev"
 }
 variable "region" {
     type = string
-    description = "region"
+    description = "Region for the S3 related stuff. The CDN will be deployed on North Virginia"
 }
 variable "zone_id" {
     type = string
@@ -32,6 +32,5 @@ variable "domain" {
 
 variable "assume_role" {
     type = string
-    description = ""
-}
+    description = "The name of the role used in your multi-account governance policy. By default AWSControlTowerExecution compatible with AWS Control Tower environments with or without AFT"
 

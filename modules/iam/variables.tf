@@ -1,11 +1,11 @@
 variable "force_destroy" {
-    description = ""
+    description = "Destroy protection for the s3 bucket. Put it to true in case you want to destroy the content of the bucket when this resource is deleted"
     type = bool
     default = false
 }
 
 variable "s3_bucket_id"{
-    description = ""
+    description = "S3 Bucket ID"
     type = string
 }
 
@@ -20,7 +20,7 @@ variable "identity_arn" {
 }
 variable "region" {
     type = string
-    description = "(optional) describe your variable"
+    description = "Region for the S3 related stuff. The CDN will be deployed on North Virginia"
 }
 
 variable "account_id" {
@@ -31,11 +31,11 @@ variable "account_id" {
 
 variable "assume_role" {
     type = string
-    description = ""
+    description = "The name of the role used in your multi-account governance policy. By default AWSControlTowerExecution compatible with AWS Control Tower environments with or without AFT"
 }
 
 variable "environment" {
     type = string
-    description = ""
+    description = "Environment for this deployment, the bucket and some random tags and strings will have it attached"
   
 }

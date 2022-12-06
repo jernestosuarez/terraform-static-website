@@ -12,18 +12,40 @@ The solution develops resources with the folowing schema
 
 ![Solution Schema](./doc/schema.png)
 
+Here we can appreciate how one main account is used to deploy the CloudFront, the ACM and Route53 records. A secondary accoutn is used to create the bucket.
+
+The solution is deployed automatically in five stages:
+
+1. Storage: New S3 bucket is deployed to ensure the right permissions and a name corresponding with the environment of this deplpoyment (dev,stage,prod..)
+2. Certificate: New ACM certificate is requested and the validation records are created in the same account's Route53
+3. Distribution: The CloudFront is deployed using the outputs of the bucket and the certificate created previously
+4. DNS: New DNS entry is created to point the distribution created in the previous step
+5. Policy: A Policy dociment is attached to the bucket created in the step 1 to ensure access to the cloudfront's identity created in the step 3 
+
 # Use
 
 1. Configure your settings.yaml
-2. Configure your backend.conf where to store the state of this deployment
-   1. If you want to avoid this step and create initial state CIs automatically you can use Terragrunt. Take a look to the terragrunt branch to know how to do it.
+   1. This file have all the settings needed for setup this solution. Please refer the section [Inputs](#inputs) for knowing the function of each parameter.
+2. Configure your backend.conf where to store the state of this deployment.
+   1. This settings reffer to the configuration used for the remote state and the Role used to create the resources.
+      1. region: Region where the remote state config items can be found
+      2. bucket: Name of the bucket to store the Terraform state
+      3. key: Name of the DynamoDb key to persist the locks, usually "LockID"
+      4. dynamodb_table: Name of the DynamoDb database
+      5. role_arn: Role ARN to assume for executing in the remote account. Usually in environments managed by AWS control Tower the AWSControlTowerExecution role is available in all the child accounts and can be used for this purpose. If not provide a Rol thaat can be assumed from your SRE Governance acccount. 
+   2. If you want to avoid this step and create initial state's config items (s3+dynamodb) automatically you can do it using Terragrunt. The terragrunt implementation is out of the scope of this test
 3. Ensure you have an index.html in your bucket. You can use the sample files in modules/s3/html
+
+# Execute the solution
+
+Run the following command.
 
 ```
 terraform init -backend-config=backend.conf && terraform plan && terraform apply
 ```
 
-# Inputs
+# Inputs 
+Set this inputs in the ./settings.yaml file.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
